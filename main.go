@@ -8,6 +8,7 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
+	db "./db"
 )
 
 // Product struct (Model)
@@ -90,6 +91,9 @@ func deleteProduct(w http.ResponseWriter, r *http.Request) {
 
 // Main function
 func main() {
+	// DB Connection
+	db.Connect()
+
 	// Init router
 	r := mux.NewRouter()
 

@@ -1,4 +1,4 @@
-package main
+package db
 
 import (
   "database/sql"
@@ -15,7 +15,7 @@ const (
   dbname   = "fedorae"
 )
 
-func main() {
+func Connect() {
   psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
     "password=%s dbname=%s sslmode=disable",
     host, port, user, password, dbname)
@@ -32,4 +32,3 @@ func main() {
 
   fmt.Println("Successfully connected!")
 }
-
