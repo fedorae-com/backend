@@ -2,16 +2,17 @@ package models
 
 import (
 	"encoding/json"
-	"strconv"
+	"github.com/go-pg/pg"
+	"log"
 	"math/rand"
 	"net/http"
-	"log"
+	"strconv"
 
-	"github.com/gorilla/mux"
 	"github.com/fedorae-com/backend/db"
+	"github.com/gorilla/mux"
 )
 
-// type Products struct {
+// type Product struct {
 // 	tableName struct{} `sql:"products"`
 // 	ID int `sql:"id,pk"`
 // 	Name string `sql:"name"`
@@ -53,8 +54,8 @@ func ProductInit()  {
 	r := mux.NewRouter()
 
 	// Hardcoded data - @todo: add database
-	products = append(products, Product{ID: "1", Name: "Product One", Quantity: "21", Price: "37.00", Store: &Store{ID: "1", Name: "Store One"}})
-	products = append(products, Product{ID: "2", Name: "Product Two", Quantity: "37", Price: "21.00", Store: &Store{ID: "2", Name: "Store Two"}})
+	//products = append(products, Product{ID: "1", Name: "Product One", Quantity: "21", Price: "37.00", Store: &Store{ID: "1", Name: "Store One"}})
+	//products = append(products, Product{ID: "2", Name: "Product Two", Quantity: "37", Price: "21.00", Store: &Store{ID: "2", Name: "Store Two"}})
 
 	// Route handles & endpoints
 	r.HandleFunc("/api/v1/products", getProducts).Methods("GET")
@@ -73,7 +74,8 @@ var products []Product
 // Get all products
 func getProducts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(products)
+	//pg.Model(&products).Select()
+	json.NewEncoder(w).Encode(pg.Model(&products).Select())
 }
 
 // Get single product

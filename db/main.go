@@ -11,6 +11,7 @@ func Connect()  {
 		User: "postgres",
 		Password: "P0$tGr3s",
 		Addr: "localhost:5432",
+		Database: "fedorae",
 	}
 
 	var db *pg.DB = pg.Connect(opts)
