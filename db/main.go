@@ -8,10 +8,10 @@ import (
 
 func Connect()  {
 	opts := &pg.Options {
-		User: "postgres",
-		Password: "P0$tGr3s",
-		Addr: "localhost:5432",
-		Database: "fedorae",
+		User: "",
+		Password: "",
+		Addr: "",
+		Database: "",
 	}
 
 	var db *pg.DB = pg.Connect(opts)
