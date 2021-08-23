@@ -1,1 +1,1 @@
-# Simple GO Lang REST API Backend.
+# Simple GO Lang REST API Backend
